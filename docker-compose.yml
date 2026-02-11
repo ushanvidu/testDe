@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  backend:
+    build: backend
+    image: backend:latest
+    container_name: backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - MONGO_URL=mongodb+srv://ushanviduranga:Ananda%402002@cluster0.cq7gwxi.mongodb.net/DevOps
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    image: frontend:latest
+    container_name: frontend
+    ports:
+      - "80:5173"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
