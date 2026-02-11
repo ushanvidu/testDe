@@ -21,7 +21,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/ushanvidu/myproject_devops.git'
+                git branch: 'master', url: 'https://github.com/ushanvidu/testDe.git'
             }
         }
 
